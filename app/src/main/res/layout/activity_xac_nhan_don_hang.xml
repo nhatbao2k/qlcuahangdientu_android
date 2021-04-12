@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar_xac_nhan_dh"
+        android:background="#FF7A22"
+        app:title="@string/xacnhandonhang"/>
+    <ListView
+        android:layout_margin="10dp"
+        android:layout_below="@+id/toolbar_xac_nhan_dh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lv_xac_don"/>
+</RelativeLayout>

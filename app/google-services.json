@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "688523767672",
+    "project_id": "cuahangdientu-894b2",
+    "storage_bucket": "cuahangdientu-894b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688523767672:android:9eadec7866bd4f81c5e28d",
+        "android_client_info": {
+          "package_name": "com.example.btl_ltuddd_electricstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688523767672-gcdndr7sa5m83c1addbb4lmrfmhbg9fe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcUf8QdM6rmtbXXaE9HN9qMEE67l5oR9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688523767672-gcdndr7sa5m83c1addbb4lmrfmhbg9fe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

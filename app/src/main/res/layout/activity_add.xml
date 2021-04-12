@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#68992e">
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/ln_1"
+          android:orientation="vertical">
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="150dp"
+              android:orientation="horizontal"
+              android:layout_weight="2">
+              <ImageView
+                  android:id="@+id/imgSP"
+                  android:layout_width="150dp"
+                  android:layout_height="150dp"
+                  android:src="@drawable/no_img"
+                  android:layout_weight="1"/>
+
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  >
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical"
+                      android:weightSum="2"
+                      android:layout_margin="10dp">
+                      <Button
+                          android:id="@+id/btn_chonAnh"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:text="@string/bt_chonAnh" />
+                      <Button
+                          android:id="@+id/btn_chupAnh"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:text="@string/bt_chupAnh" />
+                  </LinearLayout>
+              </LinearLayout>
+          </LinearLayout>
+          <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="@string/masp"
+              android:id="@+id/Edit_masp"
+              android:inputType="text"
+              android:textColorHint="#FF4081"
+              android:background="#FFF"
+              android:padding="10dp"
+              android:layout_margin="10dp"
+              android:importantForAutofill="no" />
+          <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="@string/tensp"
+              android:id="@+id/Edit_tensp"
+              android:inputType="text"
+              android:textColorHint="#FF4081"
+              android:background="#FFF"
+              android:padding="10dp"
+              android:layout_margin="10dp"
+              android:importantForAutofill="no" />
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:weightSum="3">
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="40dp"
+                  android:layout_weight="0.5"
+                  android:text="@string/maloai"
+                  android:layout_margin="10dp"
+                  android:padding="10dp"
+                  android:textColor="#000"/>
+              <Spinner
+                  android:id="@+id/cbb_maloai"
+                  android:layout_width="wrap_content"
+                  android:layout_height="40dp"
+                  android:background="#FFF"
+                  android:importantForAutofill="no"
+                  android:layout_weight="2.5"
+                  android:layout_margin="10dp"
+                  android:padding="10dp"/>
+          </LinearLayout>
+          <EditText
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="@string/gia"
+              android:id="@+id/Edit_gia"
+              android:inputType="number"
+              android:textColorHint="#FF4081"
+              android:background="#FFF"
+              android:padding="10dp"
+              android:layout_margin="10dp"
+              android:importantForAutofill="no" />
+
+          <EditText
+              android:layout_width="match_parent"
+              android:layout_height="100dp"
+              android:hint="@string/mota"
+              android:id="@+id/Edit_mota"
+              android:inputType="textMultiLine"
+              android:textColorHint="#FF4081"
+              android:background="#FFF"
+              android:padding="10dp"
+              android:layout_margin="10dp"
+              android:importantForAutofill="no" />
+
+          <Button
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:text="@string/dongY"
+              android:layout_margin="10dp"
+              android:id="@+id/btn_dongYcapNhat"
+              android:layout_gravity="center_horizontal"/>
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:weightSum="2">
+              <Button
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:text="@string/sua"
+                  android:layout_margin="10dp"
+                  android:id="@+id/btn_sua"/>
+
+              <Button
+                  android:id="@+id/btn_xoa"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="10dp"
+                  android:layout_weight="1"
+                  android:text="@string/xoa" />
+          </LinearLayout>
+          <Button
+              android:layout_width="200dp"
+              android:layout_height="wrap_content"
+              android:text="@string/exit"
+              android:id="@+id/btn_thoat_capnhat"
+              android:layout_margin="10dp"
+              android:layout_gravity="center_horizontal"/>
+      </LinearLayout>
+  </ScrollView>
+
+</RelativeLayout>
