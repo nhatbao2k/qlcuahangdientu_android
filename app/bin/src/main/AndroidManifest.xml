@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.btl_ltuddd_electricstore">
+
+    <uses-permission android:name="android.Manifest.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application xmlns:tools="http://schemas.android.com/tools"
+        android:name=".notification"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Btl_ltuddd_electricStore"
+        tools:replace="android:theme">
+
+        <receiver android:name=".NetworkChangeReciever">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".Activity.quen_mat_khau_Activity"
+            android:parentActivityName=".Activity.dang_nhap_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.doi_pass_Activity"
+            android:parentActivityName=".Activity.profile_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.danh_sach_kh_Activity"
+            android:parentActivityName=".Activity.quan_ly_ban_hang_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.chat_ho_tro_kh_Activity"
+            android:parentActivityName=".Activity.danh_sach_kh_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.xac_nhan_don_hang_Activity"
+            android:parentActivityName=".Activity.quan_ly_ban_hang_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.mua_hang_Activity"
+            android:parentActivityName=".Activity.gio_hang_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.ChatHoTro"
+            android:parentActivityName=".Activity.profile_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.lich_su_mua_hang_Activity"
+            android:parentActivityName=".Activity.profile_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.profile_Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/caidat" />
+        <activity
+            android:name=".Activity.gio_hang_Activity"
+            android:parentActivityName=".Activity.banhang_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.thongtin_sp_Activity"
+            android:parentActivityName=".Activity.banhang_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.ProductDetailActivity"
+            android:theme="@style/add"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activity.quan_ly_ban_hang_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.banhang_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.dang_nhap_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.dang_ky_Activity"
+            android:parentActivityName=".Activity.dang_nhap_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <service android:name=".service.service_notification"></service>
+    </application>
+
+</manifest>

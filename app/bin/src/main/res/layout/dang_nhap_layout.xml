@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="#68992e">-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/dangNhap"-->
+<!--        android:textColor="#FFF"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        android:layout_marginBottom="32dp"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_above="@+id/htDN"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textSize="30sp"/>-->
+<!--    <ImageView-->
+<!--        android:layout_width="60pt"-->
+<!--        android:layout_height="60pt"-->
+<!--        android:src="@drawable/store"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_above="@+id/text"-->
+<!--        android:contentDescription="TODO" />-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/htDN"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_centerHorizontal="true" >-->
+<!--        <EditText-->
+<!--            android:id="@+id/Edit_email_DN"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:hint="@string/email"-->
+<!--            android:textColorHint="#FF4081"-->
+<!--            android:background="@drawable/edittext"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:drawableLeft="@drawable/email"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:drawableStart="@drawable/email"-->
+<!--            android:autofillHints="no"-->
+<!--            android:text="kh@gmail.com"/>-->
+<!--        <EditText-->
+<!--            android:id="@+id/edit_mkDN"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@drawable/edittext"-->
+<!--            android:hint="@string/pass"-->
+<!--            android:textColorHint="#FF4081"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:drawableLeft="@drawable/mk"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:importantForAutofill="no"-->
+<!--            android:drawableStart="@drawable/mk"-->
+<!--            android:text="123321"/>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:weightSum="2">-->
+<!--            <Button-->
+<!--                android:id="@+id/btn_DN"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="@string/dangNhap"-->
+<!--                android:layout_weight="1"-->
+<!--                android:padding="10dp"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:background="@drawable/btn_radius"/>-->
+<!--            <Button-->
+<!--                android:id="@+id/btn_dk"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="@string/dangky"-->
+<!--                android:layout_weight="1"-->
+<!--                android:padding="10dp"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:background="@drawable/btn_radius"/>-->
+<!--        </LinearLayout>-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_quenMk"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="@string/quenMk"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:background="@drawable/btn_radius"/>-->
+<!--    </LinearLayout>-->
+
+<!--</RelativeLayout>-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    tools:context=".Activity.dang_nhap_Activity">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/good_morning_img" />
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham"
+                android:text="Good "
+                android:textColor="#ffffff"
+                android:textSize="32sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/gotham"
+                android:text="Morning"
+                android:textColor="#ffffff"
+                android:textSize="32sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="2dp"
+                android:background="#deff00" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/calibri"
+        android:gravity="center"
+        android:text="Cửa hàng điện tử"
+        android:textColor="#9affffff"
+        android:textSize="10sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textColor="#96ffffff"
+                    android:textSize="16sp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/pass"
+                    android:textColor="#96ffffff"
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/EditScreenTextInputLayoutStyle">
+                    <EditText
+                        android:id="@+id/Edit_email_DN"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="textEmailAddress"
+                        android:drawableRight="@drawable/email"
+                        android:drawablePadding="16dp"
+                        android:drawableEnd="@drawable/email"
+                        android:textSize="16sp"
+                        android:textColor="#FFF"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#96ffffff"
+                    android:theme="@style/EditScreenTextInputLayoutStyle">
+                    <EditText
+                        android:id="@+id/edit_mkDN"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="16sp"
+                        android:drawableRight="@drawable/mk"
+                        android:drawablePadding="16dp"
+                        android:inputType="textPassword"
+                        android:drawableEnd="@drawable/mk"
+                        android:textColor="#FFFFFF"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_DN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dangNhap"
+                android:layout_weight="1"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/buttonshapewhitebg"
+                android:textColor="#96ffffff"
+                android:textSize="16dp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/calibri"/>
+            <Button
+                android:id="@+id/btn_dk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dangky"
+                android:layout_weight="1"
+                android:background="@drawable/buttonshapewhitebg"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/calibri"
+                android:textAllCaps="false"
+                android:textColor="#96ffffff"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_quenMk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/quenMk"
+            android:layout_marginTop="16dp"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/calibri"
+            android:textAlignment="center"
+            android:textColor="#96ffffff"
+            android:background="@drawable/buttonshapewhitebg"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+</RelativeLayout>

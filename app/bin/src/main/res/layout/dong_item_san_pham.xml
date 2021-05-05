@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:weightSum="4"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <ImageView
+            android:id="@+id/img_item"
+            android:layout_width="100dp"
+            android:layout_height="160dp"
+            android:src="@drawable/no_img"
+            android:scaleType="centerInside"/>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="160dp"
+            android:orientation="vertical"
+            android:weightSum="4">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/tensp"
+                android:textColor="#000"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="@string/gia"
+                android:textColor="#000"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="@string/masp"
+                android:textColor="#000"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="@string/maloai"
+                android:textColor="#000"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txt_tensp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/tensp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/gia"
+                android:id="@+id/txt_gia"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/masp"
+                android:id="@+id/txt_masp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="@string/maloai"
+                android:id="@+id/txt_maloai"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="@string/mota"
+            android:textColor="#000"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/txt_mota_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/mota"/>
+
+    </LinearLayout>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/img_remove_item"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="1"-->
+<!--        android:src="@drawable/remove"-->
+<!--        android:contentDescription="@string/todo" />-->
+</LinearLayout>
+
+
+
