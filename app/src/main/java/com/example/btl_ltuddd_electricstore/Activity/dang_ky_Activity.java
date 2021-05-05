@@ -13,8 +13,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.btl_ltuddd_electricstore.Fragment.DatePickerFragment;
@@ -40,11 +42,14 @@ public class dang_ky_Activity extends AppCompatActivity implements View.OnFocusC
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
     BroadcastReceiver broadcastReceiver;
-
+//    ImageView imageView;
+//    TextView textView;
+//    int count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dang_ky);
+
 
         btn_thoat = (Button) findViewById(R.id.btn_Exit);
         btn_dangky = (Button) findViewById(R.id.btn_dongY);

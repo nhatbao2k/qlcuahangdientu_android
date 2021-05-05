@@ -34,7 +34,8 @@
             android:padding="10dp"
             android:hint="@string/oldpw"
             android:id="@+id/Edit_pwdold"
-            android:drawablePadding="10dp"/>
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +44,8 @@
             android:hint="@string/pass"
             android:layout_margin="10dp"
             android:padding="10dp"
-            android:id="@+id/Edit_pwd1"/>
+            android:id="@+id/Edit_pwd1"
+            android:inputType="textPassword"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,7 +54,8 @@
             android:hint="@string/pass"
             android:layout_margin="10dp"
             android:padding="10dp"
-            android:id="@+id/Edit_pwd2"/>
+            android:id="@+id/Edit_pwd2"
+            android:inputType="textPassword"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

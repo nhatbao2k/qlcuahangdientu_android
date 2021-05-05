@@ -54,6 +54,15 @@ public class quen_mat_khau_Activity extends AppCompatActivity {
         //ktra ket noi mang
         broadcastReceiver = new NetworkChangeReciever();
         registerNetWorkBroadcastReciver();
+
+        //
+        returnDangNhap();
+    }
+
+    private void returnDangNhap() {
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar_quen_mk);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void AnhXa() {

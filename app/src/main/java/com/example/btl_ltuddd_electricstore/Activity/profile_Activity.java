@@ -53,7 +53,9 @@ public class profile_Activity extends AppCompatActivity {
 
         broadcastReceiver = new NetworkChangeReciever();
         registerNetWorkBroadcastReciver();
+
     }
+
 
     private void doiPass() {
         btn_doi_mk.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +83,14 @@ public class profile_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(profile_Activity.this, banhang_Activity.class));
+            }
+        });
     }
 
     //neu ktr=0 thi lam an button con neu ktra =1 thi hien thi button

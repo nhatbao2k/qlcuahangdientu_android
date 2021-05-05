@@ -1,32 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
-    android:background="#68992e">
+    android:focusableInTouchMode="true"
+    tools:context=".Activity.dang_ky_Activity">
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <TextView
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/good_morning_img" />
+    </FrameLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginBottom="32dp"
-        android:padding="10dp"
-        android:text="@string/tenForm"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="#FFF"
-        android:layout_above="@+id/dang_ky"/>
+        android:layout_marginTop="80dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/calibri"
+            android:gravity="center"
+            android:text="@string/dangky"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+
     <LinearLayout
-        android:id="@+id/dang_ky"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
+
         <EditText
             android:id="@+id/Edit_email_dk"
             android:layout_width="match_parent"
@@ -34,18 +55,21 @@
             android:inputType="textEmailAddress"
             android:hint="@string/email"
             android:textColorHint="#FF4081"
-            android:background="#FFF"
+            android:background="@drawable/edittext"
             android:padding="10dp"
             android:layout_margin="10dp"
             android:drawableLeft="@drawable/email"
             android:drawablePadding="10dp"
             android:drawableStart="@drawable/email"
             android:autofillHints="no"/>
+
+
+
         <EditText
             android:id="@+id/edit_pass1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFF"
+            android:background="@drawable/edittext"
             android:hint="@string/pass"
             android:textColorHint="#FF4081"
             android:padding="10dp"
@@ -60,7 +84,7 @@
             android:id="@+id/edit_pass2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFF"
+            android:background="@drawable/edittext"
             android:hint="@string/pass"
             android:textColorHint="#FF4081"
             android:padding="10dp"
@@ -70,20 +94,21 @@
             android:inputType="textPassword"
             android:drawableStart="@drawable/mk"
             android:importantForAutofill="no" />
+
         <EditText
             android:id="@+id/Edit_hoTen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hoTen"
             android:textColorHint="#FF4081"
-            android:background="#FFF"
+            android:background="@drawable/edittext"
             android:padding="10dp"
             android:layout_margin="10dp"
             android:inputType="textPersonName"
             android:drawableLeft="@drawable/user"
             android:drawablePadding="10dp"
-            android:importantForAutofill="no"
             android:drawableStart="@drawable/user" />
+
         <RadioGroup
             android:id="@+id/gt"
             android:layout_width="match_parent"
@@ -98,8 +123,8 @@
                 android:padding="10dp"
                 android:text="@string/gtNam"
                 android:textColor="#FFF"
-                android:checked="true"/>
-
+                android:checked="true"
+                android:textStyle="bold"/>
             <RadioButton
                 android:id="@+id/nu"
                 android:layout_width="wrap_content"
@@ -107,8 +132,10 @@
                 android:layout_margin="10dp"
                 android:padding="10dp"
                 android:text="@string/gtNu"
-                android:textColor="#FFF" />
+                android:textColor="#FFF"
+                android:textStyle="bold"/>
         </RadioGroup>
+
         <EditText
             android:id="@+id/Edit_date"
             android:layout_width="match_parent"
@@ -119,10 +146,10 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:drawablePadding="10dp"
-            android:background="#FFF"
+            android:background="@drawable/edittext"
             android:textColorHint="#FF4081"
-            android:drawableStart="@drawable/date"
-            android:importantForAutofill="no" />
+            android:drawableStart="@drawable/date"/>
+
         <EditText
             android:id="@+id/Edit_cmND"
             android:layout_width="match_parent"
@@ -131,36 +158,204 @@
             android:layout_margin="10dp"
             android:hint="@string/cmt"
             android:textColorHint="#FF4081"
-            android:background="#FFF"
+            android:background="@drawable/edittext"
             android:drawableLeft="@drawable/card"
             android:drawablePadding="10dp"
             android:inputType="number"
-            android:importantForAutofill="no"
             android:drawableStart="@drawable/card"
             android:maxLength="12"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
             <Button
                 android:id="@+id/btn_dongY"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
                 android:padding="10dp"
-                android:text="@string/dongY" />
-
+                android:text="@string/dongY"
+                android:background="@drawable/btn_radius"/>
             <Button
                 android:id="@+id/btn_Exit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/exit"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:background="@drawable/btn_radius"/>
         </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:paddingTop="16dp"-->
+<!--    android:paddingBottom="16dp"-->
+<!--    android:background="#68992e">-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        android:layout_marginBottom="32dp"-->
+<!--        android:padding="10dp"-->
+<!--        android:text="@string/tenForm"-->
+<!--        android:textSize="25sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="#FFF"-->
+<!--        android:layout_above="@+id/dang_ky"/>-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/dang_ky"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_centerVertical="true">-->
+<!--        <EditText-->
+<!--            android:id="@+id/Edit_email_dk"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:hint="@string/email"-->
+<!--            android:textColorHint="#FF4081"-->
+<!--            android:background="@drawable/edittext"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:drawableLeft="@drawable/email"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:drawableStart="@drawable/email"-->
+<!--            android:autofillHints="no"/>-->
+<!--        <EditText-->
+<!--            android:id="@+id/edit_pass1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/edittext"-->
+<!--            android:hint="@string/pass"-->
+<!--            android:textColorHint="#FF4081"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:drawableLeft="@drawable/mk"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:drawableStart="@drawable/mk"-->
+<!--            android:importantForAutofill="no" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/edit_pass2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/edittext"-->
+<!--            android:hint="@string/pass"-->
+<!--            android:textColorHint="#FF4081"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:drawableLeft="@drawable/mk"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:drawableStart="@drawable/mk"-->
+<!--            android:importantForAutofill="no" />-->
+<!--        <EditText-->
+<!--            android:id="@+id/Edit_hoTen"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="@string/hoTen"-->
+<!--            android:textColorHint="#FF4081"-->
+<!--            android:background="@drawable/edittext"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:drawableLeft="@drawable/user"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:importantForAutofill="no"-->
+<!--            android:drawableStart="@drawable/user" />-->
+<!--        <RadioGroup-->
+<!--            android:id="@+id/gt"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <RadioButton-->
+<!--                android:id="@+id/nam"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:padding="10dp"-->
+<!--                android:text="@string/gtNam"-->
+<!--                android:textColor="#FFF"-->
+<!--                android:checked="true"/>-->
+
+<!--            <RadioButton-->
+<!--                android:id="@+id/nu"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:padding="10dp"-->
+<!--                android:text="@string/gtNu"-->
+<!--                android:textColor="#FFF" />-->
+<!--        </RadioGroup>-->
+<!--        <EditText-->
+<!--            android:id="@+id/Edit_date"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="@string/date"-->
+<!--            android:inputType="datetime"-->
+<!--            android:drawableLeft="@drawable/date"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:padding="10dp"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:background="@drawable/edittext"-->
+<!--            android:textColorHint="#FF4081"-->
+<!--            android:drawableStart="@drawable/date"-->
+<!--            android:importantForAutofill="no" />-->
+<!--        <EditText-->
+<!--            android:id="@+id/Edit_cmND"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:hint="@string/cmt"-->
+<!--            android:textColorHint="#FF4081"-->
+<!--            android:background="@drawable/edittext"-->
+<!--            android:drawableLeft="@drawable/card"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:inputType="number"-->
+<!--            android:importantForAutofill="no"-->
+<!--            android:drawableStart="@drawable/card"-->
+<!--            android:maxLength="12"/>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:weightSum="2">-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_dongY"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:padding="10dp"-->
+<!--                android:text="@string/dongY"-->
+<!--                android:background="@drawable/btn_radius"/>-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btn_Exit"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/exit"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:padding="10dp"-->
+<!--                android:background="@drawable/btn_radius"/>-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+<!--</RelativeLayout>-->

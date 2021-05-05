@@ -24,6 +24,7 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.example.btl_ltuddd_electricstore.Adapter.ItemGridviewAdapter;
+
 import com.example.btl_ltuddd_electricstore.NetworkChangeReciever;
 import com.example.btl_ltuddd_electricstore.R;
 import com.example.btl_ltuddd_electricstore.object.ItemMenuKhachHang;
@@ -58,15 +59,20 @@ public class banhang_Activity extends AppCompatActivity {
     ImageView imgPhone, imgLap;
     TextView txt_ten;
     BroadcastReceiver broadcastReceiver;
+//    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banhang);
 
-        Toast.makeText(banhang_Activity.this, "Hi "+TenUser.name, Toast.LENGTH_SHORT).show();
+        Toast.makeText(banhang_Activity.this, "Hi " + TenUser.name, Toast.LENGTH_SHORT).show();
         anhXa();
-        actionToolBar();
+        try {
+            actionToolBar();
+        }catch (Exception e){
+
+        }
         actionMenu();
         quangCao();
 
@@ -74,7 +80,7 @@ public class banhang_Activity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ItemMenuKhachHang itemMenuKhachHang = arrayList.get(position);
-                if (itemMenuKhachHang.tenItem.equals("Đăng xuất")){
+                if (itemMenuKhachHang.tenItem.equals("Đăng xuất")) {
                     startActivity(new Intent(banhang_Activity.this, dang_nhap_Activity.class));
                     finish();
                 }
@@ -85,15 +91,17 @@ public class banhang_Activity extends AppCompatActivity {
         LoadData();
 
 
-        itemGridviewAdapter = new ItemGridviewAdapter(banhang_Activity.this,mangSanPham,R.layout.item_san_pham_gridview);
+        itemGridviewAdapter = new ItemGridviewAdapter(banhang_Activity.this, mangSanPham, R.layout.item_san_pham_gridview);
         gridView.setAdapter(itemGridviewAdapter);
 
+        //menu bottom
         BottomNavigationView bt = (BottomNavigationView) findViewById(R.id.menu_bottom);
         bt.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.bottom_profile:
+                        finish();
                         startActivity(new Intent(banhang_Activity.this, profile_Activity.class));
                         break;
                     case R.id.bottom_home:
@@ -131,13 +139,15 @@ public class banhang_Activity extends AppCompatActivity {
 
         broadcastReceiver = new NetworkChangeReciever();
         registerNetWorkBroadcastReciver();
+
+
     }
 
-    public String ten ="";
+    public String ten = "";
 
 
     // tao menu navigation khi an vao toolbar
-    private void actionToolBar(){
+    private void actionToolBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(R.drawable.ic_action_menu);
@@ -148,7 +158,8 @@ public class banhang_Activity extends AppCompatActivity {
             }
         });
     }
-    private void anhXa(){
+
+    private void anhXa() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawLayout);
         navigationView = (NavigationView) findViewById(R.id.navigationView);
@@ -158,35 +169,43 @@ public class banhang_Activity extends AppCompatActivity {
         imgPhone = (ImageView) findViewById(R.id.img_smartphone);
         imgLap = (ImageView) findViewById(R.id.img_laptop);
         txt_ten = (TextView) findViewById(R.id.txt_name_user_menu);
+//        recyclerView = (RecyclerView) findViewById(R.id.recycler);
     }
-    private void actionMenu(){
+
+    private void actionMenu() {
         arrayList = new ArrayList<>();
-        arrayList.add(new ItemMenuKhachHang("home",R.drawable.home));
-        arrayList.add(new ItemMenuKhachHang("dienThoai",R.drawable.phone));
-        arrayList.add(new ItemMenuKhachHang("lapTop",R.drawable.laptop));
-        arrayList.add(new ItemMenuKhachHang("profile",R.drawable.profile));
+        arrayList.add(new ItemMenuKhachHang("home", R.drawable.home));
+        arrayList.add(new ItemMenuKhachHang("dienThoai", R.drawable.phone));
+        arrayList.add(new ItemMenuKhachHang("lapTop", R.drawable.laptop));
+        arrayList.add(new ItemMenuKhachHang("profile", R.drawable.profile));
         arrayList.add(new ItemMenuKhachHang("Đăng xuất", R.drawable.dangxuat));
 
-        menuKhachHangAdapter = new MenuKhachHangAdapter(banhang_Activity.this,R.layout.dong_item_khach_hang,arrayList);
+        menuKhachHangAdapter = new MenuKhachHangAdapter(banhang_Activity.this, R.layout.dong_item_khach_hang, arrayList);
         listView.setAdapter(menuKhachHangAdapter);
     }
 
     //Chuyển động ảnh quảng cáo
-    private void quangCao(){
+    private void quangCao() {
         viewFlipper = (ViewFlipper) findViewById(R.id.view_quangcao);
         viewFlipper.setFlipInterval(3000);
         viewFlipper.setAutoStart(true);
     }
 
     // lay du lieu tu firebase truyen vao arraylist de hien thi cac san pham
-    private void LoadData(){
+    private void LoadData() {
         mangSanPham.clear();
         mData.child("SanPham").child("DT").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 SanPham sp = snapshot.getValue(SanPham.class);
-                mangSanPham.add(new SanPham(sp.getTenSP(),sp.getMaSP(),sp.getMaLoaiSP(),sp.getGia(),sp.getMoTa(),sp.getHinhAnh()));
+                mangSanPham.add(new SanPham(sp.getTenSP(), sp.getMaSP(), sp.getMaLoaiSP(), sp.getGia(), sp.getMoTa(), sp.getHinhAnh()));
                 itemGridviewAdapter.notifyDataSetChanged();
+//                MyRecyclerAdapter myRecyclerAdapter = new MyRecyclerAdapter(mangSanPham,banhang_Activity.this, (position, obj) -> {
+//
+//                });
+//                LinearLayoutManager layoutManager = new LinearLayoutManager(banhang_Activity.this, LinearLayoutManager.HORIZONTAL, false);
+//                recyclerView.setLayoutManager(new GridLayoutManager(banhang_Activity.this, 2));
+//                recyclerView.setAdapter(myRecyclerAdapter);
             }
 
             @Override
@@ -213,7 +232,7 @@ public class banhang_Activity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 SanPham sp = snapshot.getValue(SanPham.class);
-                mangSanPham.add(new SanPham(sp.getTenSP(),sp.getMaSP(),sp.getMaLoaiSP(),sp.getGia(),sp.getMoTa(),sp.getHinhAnh()));
+                mangSanPham.add(new SanPham(sp.getTenSP(), sp.getMaSP(), sp.getMaLoaiSP(), sp.getGia(), sp.getMoTa(), sp.getHinhAnh()));
                 itemGridviewAdapter.notifyDataSetChanged();
             }
 
@@ -240,7 +259,7 @@ public class banhang_Activity extends AppCompatActivity {
     }
 
     //click vào item của gridview
-    private void hienThiThongTinSP(){
+    private void hienThiThongTinSP() {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -248,19 +267,19 @@ public class banhang_Activity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 SanPham sp = mangSanPham.get(position);
                 bundle.putSerializable("ttsp", sp);
-                intent.putExtra("data",bundle);
+                intent.putExtra("data", bundle);
                 startActivity(intent);
             }
         });
     }
 
-    private void hienThiDT(){
+    private void hienThiDT() {
         mangSanPham.clear();
         mData.child("SanPham").child("DT").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 SanPham sp = snapshot.getValue(SanPham.class);
-                mangSanPham.add(new SanPham(sp.getMaSP(),sp.getTenSP(), sp.getMaLoaiSP(),sp.getGia(), sp.getMoTa(), sp.getHinhAnh()));
+                mangSanPham.add(new SanPham(sp.getMaSP(), sp.getTenSP(), sp.getMaLoaiSP(), sp.getGia(), sp.getMoTa(), sp.getHinhAnh()));
                 itemGridviewAdapter.notifyDataSetChanged();
             }
 
@@ -286,13 +305,13 @@ public class banhang_Activity extends AppCompatActivity {
         });
     }
 
-    private void hienThiLT(){
+    private void hienThiLT() {
         mangSanPham.clear();
         mData.child("SanPham").child("LT").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 SanPham sp = snapshot.getValue(SanPham.class);
-                mangSanPham.add(new SanPham(sp.getMaSP(),sp.getTenSP(), sp.getMaLoaiSP(),sp.getGia(), sp.getMoTa(), sp.getHinhAnh()));
+                mangSanPham.add(new SanPham(sp.getMaSP(), sp.getTenSP(), sp.getMaLoaiSP(), sp.getGia(), sp.getMoTa(), sp.getHinhAnh()));
                 itemGridviewAdapter.notifyDataSetChanged();
             }
 
@@ -318,19 +337,19 @@ public class banhang_Activity extends AppCompatActivity {
         });
     }
 
-    protected void registerNetWorkBroadcastReciver(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+    protected void registerNetWorkBroadcastReciver() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         }
     }
 
-    protected void unregisterNetwork(){
+    protected void unregisterNetwork() {
         try {
             unregisterReceiver(broadcastReceiver);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
     }

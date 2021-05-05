@@ -14,7 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@+id/toolbar_quen_mk">
+        android:layout_below="@+id/toolbar_quen_mk"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

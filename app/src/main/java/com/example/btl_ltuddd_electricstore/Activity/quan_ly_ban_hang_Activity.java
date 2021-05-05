@@ -1,22 +1,18 @@
 package com.example.btl_ltuddd_electricstore.Activity;
 
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -28,11 +24,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.btl_ltuddd_electricstore.Adapter.ItemQuanLyAdapter;
 import com.example.btl_ltuddd_electricstore.Adapter.MenuQlAdapter;
-import com.example.btl_ltuddd_electricstore.Adapter.XacNhanDonHangAdapter;
 import com.example.btl_ltuddd_electricstore.NetworkChangeReciever;
 import com.example.btl_ltuddd_electricstore.R;
 import com.example.btl_ltuddd_electricstore.object.ItemMenuQL;
-import com.example.btl_ltuddd_electricstore.object.LichSuMuaHang;
 import com.example.btl_ltuddd_electricstore.object.PhuongThucDonHang;
 import com.example.btl_ltuddd_electricstore.object.SanPham;
 import com.example.btl_ltuddd_electricstore.object.TenUser;
@@ -83,8 +77,8 @@ public class quan_ly_ban_hang_Activity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ItemMenuQL itemMenuQL = arrayList.get(position);
                 if (itemMenuQL.tenIcon.equals("Đăng xuất")){
-                    finish();
                     startActivity(new Intent(quan_ly_ban_hang_Activity.this, dang_nhap_Activity.class));
+                    finish();
                 }else if (itemMenuQL.tenIcon.equals("Quản lý điện thoại")){
                     LoadDienThoai();
                 }else if (itemMenuQL.tenIcon.equals("Quản lý Laptop")){
@@ -119,7 +113,7 @@ public class quan_ly_ban_hang_Activity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 method = "e_d";
-                Intent intent = new Intent(quan_ly_ban_hang_Activity.this, add_Activity.class);
+                Intent intent = new Intent(quan_ly_ban_hang_Activity.this, ProductDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("method",method);
                 SanPham sanPham = mangSanPham.get(position);
@@ -127,6 +121,7 @@ public class quan_ly_ban_hang_Activity extends AppCompatActivity {
 
                 intent.putExtra("dulieu",bundle);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -191,7 +186,7 @@ public class quan_ly_ban_hang_Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menuAdd){
             method = "add";
-            Intent intent = new Intent(quan_ly_ban_hang_Activity.this, add_Activity.class);
+            Intent intent = new Intent(quan_ly_ban_hang_Activity.this, ProductDetailActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("method",method);
 

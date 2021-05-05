@@ -254,7 +254,6 @@ public class thongtin_sp_Activity extends AppCompatActivity {
                         Toast.makeText(thongtin_sp_Activity.this, "Bình luận đã được đăng", Toast.LENGTH_SHORT).show();
                         DaoBinhLuan();
                         edit_soanTinNhan.setText("");
-
                     }
                 });
 

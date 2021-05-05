@@ -72,8 +72,8 @@ public class mua_hang_Activity extends AppCompatActivity {
         registerNetWorkBroadcastReciver();
 
         //nhan thong bao đon hang
-        Intent service = new Intent(this, service_notification_kh.class);
-        startService(service);
+//        Intent service = new Intent(this, service_notification_kh.class);
+//        startService(service);
     }
 
     private void AnhXa(){
@@ -181,13 +181,13 @@ public class mua_hang_Activity extends AppCompatActivity {
                                         public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                                             if (error == null){
 //                                                Toast.makeText(mua_hang_Activity.this, "Xác nhận đơn hàng đã được tạo thành công", Toast.LENGTH_SHORT).show();
-                                                sendNotification();
+
                                                 //xoa du lieu o trong gio hang
                                                 mData.child("GioHang").child(TenUser.ID).removeValue();
                                                 mData.child("ThongBao").child("ChoXacNhan").child(TenUser.ID).setValue(new ThongBao(TenUser.name, TenUser.ID, TenUser.name+" đã đặt hàng","ChoXacNhan", date));
-                                                finish();
+                                                sendNotification();
                                                 startActivity(new Intent(mua_hang_Activity.this, banhang_Activity.class));
-
+                                                finish();
 //                                                txt_gia.setText("");
 //                                                edit_diachi.setText("");
 //                                                edit_hoTen.setText("");

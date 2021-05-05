@@ -191,6 +191,7 @@ public class gio_hang_Activity extends AppCompatActivity {
                 });
                 dialog.dismiss();
                 Intent intent = getIntent();
+                finish();
                 startActivity(intent);
             }
         });

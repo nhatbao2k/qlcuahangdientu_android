@@ -19,6 +19,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -50,11 +51,17 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Calendar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class add_Activity extends AppCompatActivity {
 
-    ImageView img;
-    Button btnAdd, btnHuy, btnChupAnh, btnChonAnh, btn_sua, btn_xoa;
+public class ProductDetailActivity extends AppCompatActivity {
+    @BindView(R.id.imgSP) ImageView img;
+
+    @BindView(R.id.btn_dongYcapNhat)
+    Button btnAdd;
+
+    Button  btnHuy, btnChupAnh, btnChonAnh, btn_sua, btn_xoa;
     EditText edit_maSP, edit_tenSP, edit_gia, edit_mota;
     Spinner cbb_maLSP;
     int REQUEST_CODE_CAMERA = 123;
@@ -62,20 +69,18 @@ public class add_Activity extends AppCompatActivity {
     FirebaseStorage storage = FirebaseStorage.getInstance();
     DatabaseReference mData;
     String maL;
-    public String ktra="";
+    public String ktra = "";
     BroadcastReceiver broadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-
-        img = (ImageView) findViewById(R.id.imgSP);
-        btnAdd = (Button) findViewById(R.id.btn_dongYcapNhat);
+        ButterKnife.bind(this);
         btnHuy = (Button) findViewById(R.id.btn_thoat_capnhat);
         btnChupAnh = (Button) findViewById(R.id.btn_chupAnh);
         btnChonAnh = (Button) findViewById(R.id.btn_chonAnh);
-        edit_maSP =(EditText) findViewById(R.id.Edit_masp);
+        edit_maSP = (EditText) findViewById(R.id.Edit_masp);
         cbb_maLSP = (Spinner) findViewById(R.id.cbb_maloai);
         edit_tenSP = (EditText) findViewById(R.id.Edit_tensp);
         edit_gia = (EditText) findViewById(R.id.Edit_gia);
@@ -83,8 +88,7 @@ public class add_Activity extends AppCompatActivity {
         btn_sua = (Button) findViewById(R.id.btn_sua);
         btn_xoa = (Button) findViewById(R.id.btn_xoa);
 
-
-
+        // du lieu cua spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.cbbmal, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cbb_maLSP.setAdapter(adapter);
@@ -103,23 +107,23 @@ public class add_Activity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("dulieu");
 
-        if (bundle != null){
+        if (bundle != null) {
             String kq = bundle.getString("method");
-            if (kq.equals("add")){
+            if (kq.equals("add")) {
                 btn_sua.setVisibility(View.GONE);
                 btn_xoa.setVisibility(View.GONE);
             }
-            if (kq.equals("e_d")){
+            if (kq.equals("e_d")) {
                 edit_maSP.setEnabled(false);
                 cbb_maLSP.setEnabled(false);
                 btnAdd.setVisibility(View.GONE);
                 SanPham sp = (SanPham) bundle.getSerializable("sanpham");
                 edit_maSP.setText(sp.getMaSP());
                 edit_tenSP.setText(sp.getTenSP());
-                if (sp.getMaLoaiSP().equals("DT")){
+                if (sp.getMaLoaiSP().equals("DT")) {
                     cbb_maLSP.setSelection(0);
                 }
-                if (sp.getMaLoaiSP().equals("LT")){
+                if (sp.getMaLoaiSP().equals("LT")) {
                     cbb_maLSP.setSelection(1);
                 }
                 edit_gia.setText(sp.getGia());
@@ -160,7 +164,7 @@ public class add_Activity extends AppCompatActivity {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                         SanPham sp = snapshot.getValue(SanPham.class);
-                        if (ma.equals(sp.getMaSP())){
+                        if (ma.equals(sp.getMaSP())) {
                             ktra = "trung";
                         }
                     }
@@ -185,7 +189,7 @@ public class add_Activity extends AppCompatActivity {
 
                     }
                 });
-                new CountDownTimer(400,1000) {
+                new CountDownTimer(400, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
 
@@ -193,17 +197,16 @@ public class add_Activity extends AppCompatActivity {
 
                     @Override
                     public void onFinish() {
-                        if (ktra.equals("trung")){
-                            Toast.makeText(add_Activity.this, "Mã sản phẩm bị trùng",Toast.LENGTH_SHORT).show();
+                        if (ktra.equals("trung")) {
+                            Toast.makeText(ProductDetailActivity.this, "Mã sản phẩm bị trùng", Toast.LENGTH_SHORT).show();
                             Intent intent = getIntent();
                             finish();
                             startActivity(intent);
-                        }
-                        else {
+                        } else {
                             StorageReference mountainsRef = storageRef.child("image" + calendar.getTimeInMillis() + ".png");
                             // Get the data from an ImageView as bytes
 
-                            if (ma.length() != 0 && ten.length() != 0 && maL.length() != 0 && gia.length() != 0 && mota.length() != 0){
+                            if (ma.length() != 0 && ten.length() != 0 && maL.length() != 0 && gia.length() != 0 && mota.length() != 0) {
                                 img.setDrawingCacheEnabled(true);
                                 img.buildDrawingCache();
                                 Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
@@ -215,31 +218,32 @@ public class add_Activity extends AppCompatActivity {
                                     @Override
                                     public void onFailure(@NonNull Exception exception) {
                                         // Handle unsuccessful uploads
-                                        Toast.makeText(add_Activity.this,"Lỗi",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ProductDetailActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
                                     }
                                 }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                     @Override
                                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                         // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
                                         // ...
-                                        Toast.makeText(add_Activity.this,"Lưu ảnh vào storage thành công",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ProductDetailActivity.this, "Lưu ảnh vào storage thành công", Toast.LENGTH_SHORT).show();
                                         if (taskSnapshot.getMetadata() != null) {
                                             if (taskSnapshot.getMetadata().getReference() != null) {
+                                                //lay url
                                                 Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
                                                 result.addOnSuccessListener(new OnSuccessListener<Uri>() {
                                                     @Override
                                                     public void onSuccess(Uri uri) {
                                                         String imageUrl = uri.toString();
-                                                        SanPham sanPham = new SanPham(ma,ten,maL,gia,mota, String.valueOf(imageUrl));
+                                                        SanPham sanPham = new SanPham(ma, ten, maL, gia, mota, String.valueOf(imageUrl));
                                                         mData.child("SanPham").child(maL).child(ma).setValue(sanPham, new DatabaseReference.CompletionListener() {
                                                             @Override
                                                             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                                                                if (error == null){
-                                                                    Toast.makeText(add_Activity.this, "Thêm dữ liệu thành công",Toast.LENGTH_SHORT).show();
-                                                                    startActivity(new Intent(add_Activity.this, quan_ly_ban_hang_Activity.class));
+                                                                if (error == null) {
+                                                                    Toast.makeText(ProductDetailActivity.this, "Thêm dữ liệu thành công", Toast.LENGTH_SHORT).show();
+                                                                    startActivity(new Intent(ProductDetailActivity.this, quan_ly_ban_hang_Activity.class));
                                                                     finish();
-                                                                }else {
-                                                                    Toast.makeText(add_Activity.this, "Lỗi",Toast.LENGTH_SHORT).show();
+                                                                } else {
+                                                                    Toast.makeText(ProductDetailActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
                                                                 }
                                                             }
                                                         });
@@ -249,14 +253,12 @@ public class add_Activity extends AppCompatActivity {
                                         }
                                     }
                                 });
-                            }
-                            else {
-                                Toast.makeText(add_Activity.this,"Nhập thiếu dữ liệu",Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(ProductDetailActivity.this, "Nhập thiếu dữ liệu", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
                 }.start();
-
 
 
             }
@@ -266,7 +268,7 @@ public class add_Activity extends AppCompatActivity {
         btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(add_Activity.this,quan_ly_ban_hang_Activity.class));
+                startActivity(new Intent(ProductDetailActivity.this, quan_ly_ban_hang_Activity.class));
                 finish();
             }
         });
@@ -291,17 +293,16 @@ public class add_Activity extends AppCompatActivity {
         //ktra ket noi internet
         broadcastReceiver = new NetworkChangeReciever();
         registerNetWorkBroadcastReciver();
+
+        Log.d("LIFE_CYCEL","onCreate");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        if (requestCode == REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data != null){
-//            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-//            img.setImageBitmap(bitmap);
-//        }
-        if (resultCode == RESULT_OK){
-            if (requestCode == REQUEST_CHOOSE_PHOTO){
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_CHOOSE_PHOTO) {
                 try {
+                    //tro den mot buc anh
                     Uri imageUri = data.getData();
                     InputStream is = getContentResolver().openInputStream(imageUri);
                     Bitmap bitmap = BitmapFactory.decodeStream(is);
@@ -309,7 +310,7 @@ public class add_Activity extends AppCompatActivity {
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-            }else if (requestCode == REQUEST_CODE_CAMERA){
+            } else if (requestCode == REQUEST_CODE_CAMERA) {
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                 img.setImageBitmap(bitmap);
             }
@@ -318,7 +319,7 @@ public class add_Activity extends AppCompatActivity {
     }
 
     // goi dialog sửa
-    private void showDialogUpdate(){
+    private void showDialogUpdate() {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_yes_no);
         dialog.show();
@@ -338,39 +339,42 @@ public class add_Activity extends AppCompatActivity {
         btn_dongy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Get the data from an ImageView as bytes
                 img.setDrawingCacheEnabled(true);
                 img.buildDrawingCache();
                 Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG,100,baos);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
                 byte[] data = baos.toByteArray();
 
+                //upload anh va ten anh len storage
                 UploadTask uploadTask = mountainsRef.putBytes(data);
                 uploadTask.addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(add_Activity.this,"Lỗi",Toast.LENGTH_SHORT).toString();
+                        Toast.makeText(ProductDetailActivity.this, "Lỗi", Toast.LENGTH_SHORT).toString();
                     }
                 }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         if (taskSnapshot.getMetadata() != null) {
                             if (taskSnapshot.getMetadata().getReference() != null) {
+                                //lay url
                                 Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
                                 result.addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
                                     public void onSuccess(Uri uri) {
                                         String imageUrl = uri.toString();
-                                        SanPham sanPham = new SanPham(ma,ten,maL,gia,mota, String.valueOf(imageUrl));
+                                        SanPham sanPham = new SanPham(ma, ten, maL, gia, mota, String.valueOf(imageUrl));
                                         mData.child("SanPham").child(maL).child(ma).setValue(sanPham, new DatabaseReference.CompletionListener() {
                                             @Override
                                             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                                                if (error == null){
-                                                    Toast.makeText(add_Activity.this, "Update dữ liệu thành công",Toast.LENGTH_SHORT).show();
-                                                    startActivity(new Intent(add_Activity.this,quan_ly_ban_hang_Activity.class));
+                                                if (error == null) {
+                                                    Toast.makeText(ProductDetailActivity.this, "Update dữ liệu thành công", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(ProductDetailActivity.this, quan_ly_ban_hang_Activity.class));
                                                     finish();
-                                                }else {
-                                                    Toast.makeText(add_Activity.this, "Lỗi",Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    Toast.makeText(ProductDetailActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         });
@@ -427,7 +431,7 @@ public class add_Activity extends AppCompatActivity {
 //    }
 
     // gọi dialog xóa
-    private void showDialogDelete(){
+    private void showDialogDelete() {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_yes_no);
         dialog.show();
@@ -449,9 +453,10 @@ public class add_Activity extends AppCompatActivity {
                 mData.child("SanPham").child(maL).child(ma).removeValue(new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                        Toast.makeText(add_Activity.this, "Xóa dữ liệu thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProductDetailActivity.this, "Xóa dữ liệu thành công", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
-                        startActivity(new Intent(add_Activity.this, quan_ly_ban_hang_Activity.class));
+                        startActivity(new Intent(ProductDetailActivity.this, quan_ly_ban_hang_Activity.class));
+                        finish();
                     }
                 });
             }
@@ -459,19 +464,19 @@ public class add_Activity extends AppCompatActivity {
     }
 
     //ktra ket noi Internet
-    protected void registerNetWorkBroadcastReciver(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+    protected void registerNetWorkBroadcastReciver() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             registerReceiver(broadcastReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         }
     }
 
-    protected void unregisterNetwork(){
+    protected void unregisterNetwork() {
         try {
             unregisterReceiver(broadcastReceiver);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
     }
@@ -480,5 +485,36 @@ public class add_Activity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterNetwork();
+        Log.d("LIFE_CYCEL","onDestroy");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("LIFE_CYCEL","onRestart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("LIFE_CYCEL","onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("LIFE_CYCEL","onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("LIFE_CYCEL","onStop");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("LIFE_CYCEL","onStart");
     }
 }

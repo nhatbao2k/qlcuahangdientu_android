@@ -1,10 +1,7 @@
 package com.example.btl_ltuddd_electricstore.Activity;
 
 import android.app.Dialog;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -12,23 +9,24 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 
 import com.example.btl_ltuddd_electricstore.NetworkChangeReciever;
+import com.example.btl_ltuddd_electricstore.ChuyenDong.OnSwipeTouchListener;
 import com.example.btl_ltuddd_electricstore.R;
 
-import com.example.btl_ltuddd_electricstore.isNetworkConnected.network_connected;
-import com.example.btl_ltuddd_electricstore.notification;
 import com.example.btl_ltuddd_electricstore.object.TenUser;
 import com.example.btl_ltuddd_electricstore.object.ThongTinCaNhan;
-import com.example.btl_ltuddd_electricstore.service.service_notification;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -38,8 +36,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Date;
 
 public class dang_nhap_Activity extends AppCompatActivity {
 
@@ -52,10 +48,20 @@ public class dang_nhap_Activity extends AppCompatActivity {
     public String nameID = "";
     public String gmail = "";
     BroadcastReceiver broadcastReceiver;
+    ImageView imageView;
+    TextView textView;
+    int count = 0;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.dang_nhap_layout);
+        imageView = findViewById(R.id.imageView);
+        textView = findViewById(R.id.textView);
+
 
         bt_dk = (Button) findViewById(R.id.btn_dk);
         bt_dk.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +86,7 @@ public class dang_nhap_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if (edit_tkdn.getText().toString().length() != 0 &&  edit_mkdn.getText().toString().length() != 0){
                     String email = edit_tkdn.getText().toString();
+                    //lay quyen de xac minh dang nhap
                     mDatabase.child("ThongTinCaNhan").addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -163,6 +170,40 @@ public class dang_nhap_Activity extends AppCompatActivity {
         //
         broadcastReceiver = new NetworkChangeReciever();
         registerNetWorkBroadcastReciver();
+
+        //
+        imageView.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
+            public void onSwipeTop() {
+            }
+
+            public void onSwipeRight() {
+                if (count == 0) {
+                    imageView.setImageResource(R.drawable.good_night_img);
+                    textView.setText("Night");
+                    count = 1;
+                } else {
+                    imageView.setImageResource(R.drawable.good_morning_img);
+                    textView.setText("Morning");
+                    count = 0;
+                }
+            }
+
+            public void onSwipeLeft() {
+                if (count == 0) {
+                    imageView.setImageResource(R.drawable.good_night_img);
+                    textView.setText("Night");
+                    count = 1;
+                } else {
+                    imageView.setImageResource(R.drawable.good_morning_img);
+                    textView.setText("Morning");
+                    count = 0 ;
+                }
+            }
+
+            public void onSwipeBottom() {
+            }
+
+        });
     }
 
     protected void registerNetWorkBroadcastReciver(){

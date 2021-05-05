@@ -23,49 +23,67 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Activity.quen_mat_khau_Activity" />
+        <activity
+            android:name=".Activity.quen_mat_khau_Activity"
+            android:parentActivityName=".Activity.dang_nhap_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Activity.doi_pass_Activity"
             android:parentActivityName=".Activity.profile_Activity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Activity.danh_sach_kh_Activity"
-            android:parentActivityName=".Activity.quan_ly_ban_hang_Activity" />
+            android:parentActivityName=".Activity.quan_ly_ban_hang_Activity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.chat_ho_tro_kh_Activity"
-            android:parentActivityName=".Activity.danh_sach_kh_Activity" />
+            android:parentActivityName=".Activity.danh_sach_kh_Activity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.xac_nhan_don_hang_Activity"
-            android:parentActivityName=".Activity.quan_ly_ban_hang_Activity" />
+            android:parentActivityName=".Activity.quan_ly_ban_hang_Activity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.mua_hang_Activity"
             android:parentActivityName=".Activity.gio_hang_Activity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Activity.ChatHoTro"
-            android:parentActivityName=".Activity.profile_Activity" />
+            android:parentActivityName=".Activity.profile_Activity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.lich_su_mua_hang_Activity"
-            android:parentActivityName=".Activity.profile_Activity" />
+            android:parentActivityName=".Activity.profile_Activity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.profile_Activity"
-            android:parentActivityName=".Activity.banhang_Activity"
+            android:screenOrientation="portrait"
             android:theme="@style/caidat" />
         <activity
             android:name=".Activity.gio_hang_Activity"
-            android:parentActivityName=".Activity.banhang_Activity" />
+            android:parentActivityName=".Activity.banhang_Activity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.thongtin_sp_Activity"
             android:parentActivityName=".Activity.banhang_Activity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".Activity.add_Activity"
+            android:name=".Activity.ProductDetailActivity"
             android:theme="@style/add"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".Activity.quan_ly_ban_hang_Activity" />
-        <activity android:name=".Activity.banhang_Activity" />
+        <activity
+            android:name=".Activity.quan_ly_ban_hang_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.banhang_Activity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.dang_nhap_Activity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -76,10 +94,10 @@
         <activity
             android:name=".Activity.dang_ky_Activity"
             android:parentActivityName=".Activity.dang_nhap_Activity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <service android:name=".service.service_notification">
 
-        </service>
+        <service android:name=".service.service_notification"></service>
     </application>
 
 </manifest>

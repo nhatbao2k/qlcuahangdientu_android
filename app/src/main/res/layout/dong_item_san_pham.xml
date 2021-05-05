@@ -5,8 +5,6 @@
     android:layout_margin="10dp"
     android:weightSum="4"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,7 +95,7 @@
             android:textStyle="bold"
             android:text="@string/mota"
             android:textColor="#000"
-            android:textAlignment="center"/>
+            android:gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/txt_mota_item"

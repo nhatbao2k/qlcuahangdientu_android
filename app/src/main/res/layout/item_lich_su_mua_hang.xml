@@ -167,6 +167,7 @@
             android:layout_weight="1"
             android:text="@string/mualai"
             android:id="@+id/btn_mua_lai_ls"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:background="@drawable/btn_radius"/>
     </LinearLayout>
 </LinearLayout>
