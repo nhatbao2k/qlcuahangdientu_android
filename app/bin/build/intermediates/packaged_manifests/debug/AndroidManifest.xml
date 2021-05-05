@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.btl_ltuddd_electricstore"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="30" />
+
+    <uses-permission android:name="android.Manifest.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.example.btl_ltuddd_electricstore.notification"
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/Theme.Btl_ltuddd_electricStore" >
+        <receiver android:name="com.example.btl_ltuddd_electricstore.NetworkChangeReciever" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.quen_mat_khau_Activity"
+            android:parentActivityName="com.example.btl_ltuddd_electricstore.Activity.dang_nhap_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.doi_pass_Activity"
+            android:parentActivityName="com.example.btl_ltuddd_electricstore.Activity.profile_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.danh_sach_kh_Activity"
+            android:parentActivityName="com.example.btl_ltuddd_electricstore.Activity.quan_ly_ban_hang_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.chat_ho_tro_kh_Activity"
+            android:parentActivityName="com.example.btl_ltuddd_electricstore.Activity.danh_sach_kh_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.xac_nhan_don_hang_Activity"
+            android:parentActivityName="com.example.btl_ltuddd_electricstore.Activity.quan_ly_ban_hang_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.mua_hang_Activity"
+            android:parentActivityName="com.example.btl_ltuddd_electricstore.Activity.gio_hang_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.ChatHoTro"
+            android:parentActivityName="com.example.btl_ltuddd_electricstore.Activity.profile_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.lich_su_mua_hang_Activity"
+            android:parentActivityName="com.example.btl_ltuddd_electricstore.Activity.profile_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.profile_Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/caidat" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.gio_hang_Activity"
+            android:parentActivityName="com.example.btl_ltuddd_electricstore.Activity.banhang_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.thongtin_sp_Activity"
+            android:parentActivityName="com.example.btl_ltuddd_electricstore.Activity.banhang_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.ProductDetailActivity"
+            android:theme="@style/add"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.quan_ly_ban_hang_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.banhang_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.dang_nhap_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.btl_ltuddd_electricstore.Activity.dang_ky_Activity"
+            android:parentActivityName="com.example.btl_ltuddd_electricstore.Activity.dang_nhap_Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <service android:name="com.example.btl_ltuddd_electricstore.service.service_notification" />
+
+        <activity
+            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="firebase.auth"
+                    android:path="/"
+                    android:scheme="genericidp" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="firebase.auth"
+                    android:path="/"
+                    android:scheme="recaptcha" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.firebase.auth.api.gms.service.START" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:directBootAware="true"
+            android:exported="false" >
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <!--
+                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
+                clients to use it as well, by defining this registrar in their own core/common library.
+            -->
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+
+        <provider
+            android:name="com.squareup.picasso.PicassoProvider"
+            android:authorities="com.example.btl_ltuddd_electricstore.com.squareup.picasso"
+            android:exported="false" />
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.example.btl_ltuddd_electricstore.firebaseinitprovider"
+            android:directBootAware="true"
+            android:exported="false"
+            android:initOrder="100" />
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+    </application>
+
+</manifest>
