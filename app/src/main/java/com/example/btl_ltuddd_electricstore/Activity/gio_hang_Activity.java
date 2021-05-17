@@ -83,7 +83,6 @@ public class gio_hang_Activity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-//                Log.i("size", gioHangArrayList.size()+"");
                 for (int i = 0; i< gioHangArrayList.size(); i++){
 //                    Log.i("A22222",Long.parseLong(gioHangArrayList.get(i).getGia())+"");
                     tonggia += Long.parseLong(gioHangArrayList.get(i).getGia());
